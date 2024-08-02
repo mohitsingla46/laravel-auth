@@ -10,11 +10,21 @@ class UserService
 {
     protected $userRepository;
 
+    /**
+     * @param \App\Repositories\UserRepository $userRepository
+     *
+     * @return void
+     */
     public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
     }
 
+    /**
+     * @param array $userData
+     *
+     * @return \App\Models\User|null
+     */
     public function SignUpUser(array $userData)
     {
         if ($this->userRepository->isEmailUnique($userData['email'])) {
@@ -29,6 +39,12 @@ class UserService
         return null;
     }
 
+
+    /**
+     * @param array $userData
+     *
+     * @return \Illuminate\Contracts\Auth\Authenticatable|null
+     */
     public function SignInUser(array $userData)
     {
         if (Auth::attempt($userData)) {
@@ -38,6 +54,11 @@ class UserService
         }
     }
 
+    /**
+     * @param integer $id
+     *
+     * @return \App\Models\User|null
+     */
     public function getUserById($id)
     {
         return $this->userRepository->getUserById($id);

@@ -30,7 +30,7 @@ php artisan migrate
 
 ### Launch and discover
 
-You are now ready to launch the NestJS application using the command below.
+You are now ready to launch the Laravel application using the command below.
 
 ```
 php artisan serve
